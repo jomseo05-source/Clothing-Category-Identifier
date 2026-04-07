@@ -1,5 +1,6 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from PIL import Image
 import io
 import time
@@ -13,9 +14,12 @@ app = FastAPI(
     openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
 
+# 정적 파일 서빙 설정 (app/static 폴더)
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
 @app.get("/")
 async def root():
-    return {"message": "의류 카테고리 식별 API 서버가 동작 중입니다.", "docs": "/docs"}
+    return FileResponse("app/static/index.html")
 
 @app.post(f"{settings.API_V1_STR}/predict")
 async def predict_clothing(file: UploadFile = File(...)):

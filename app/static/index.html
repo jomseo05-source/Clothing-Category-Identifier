@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Category Identifier - Premium AI</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <main class="container">
+        <header>
+            <h1 class="logo">Cloth<span>AI</span></h1>
+            <p class="subtitle">의류 이미지를 업로드하고 카테고리와 스타일을 한 번에 분석하세요.</p>
+        </header>
+
+        <section class="upload-section">
+            <div id="drop-zone" class="drop-zone">
+                <div class="drop-zone-content">
+                    <div class="icon-box">
+                        <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                    </div>
+                    <p class="main-text">이미지를 드래그하거나 클릭하여 업로드</p>
+                    <p class="sub-text">PNG, JPG, JPEG (최대 5MB)</p>
+                </div>
+                <input type="file" id="file-input" hidden accept="image/*">
+            </div>
+        </section>
+
+        <section id="result-section" class="result-section hidden">
+            <div class="result-grid">
+                <div class="preview-card">
+                    <img id="image-preview" src="" alt="의류 미리보기">
+                </div>
+                <div class="info-card">
+                    <div class="status-badge" id="loading-spinner">분류 중...</div>
+                    <div class="card-item animate-in" style="--delay: 1">
+                        <label>예측 라벨</label>
+                        <h2 id="res-prediction">-</h2>
+                    </div>
+                    <div class="card-item animate-in" style="--delay: 2">
+                        <label>카테고리</label>
+                        <h3 id="res-category">-</h3>
+                    </div>
+                    <div class="card-item animate-in" style="--delay: 3">
+                        <label>AI 추천 스타일</label>
+                        <h3 id="res-style">-</h3>
+                    </div>
+                    <div class="card-item animate-in" style="--delay: 4">
+                        <label>처리 시간</label>
+                        <p id="res-time">-</p>
+                    </div>
+                    <button id="reset-btn" class="btn-secondary">다른 이미지 분석하기</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Clothing Category Identifier. Powered by Deepmind Antigravity.</p>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
